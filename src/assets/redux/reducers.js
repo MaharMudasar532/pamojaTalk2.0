@@ -12,6 +12,20 @@ import {
 } from './actions';
 
 const initialState = {
+  Colors:{
+    bgColor:"#FFFFFF",
+    pink: '#F62E8E',
+    btnTxt:"#FFFFFF",
+    headingColor:"#0D0D0D",
+    inputBorderCol:"#676767",
+    inputPlacCol:"#676767",
+    BlackOrPurple:"#000000",
+    greyOrDark:"#F5F5F5",
+    lightGreyHeading:"#676767"
+  },
+
+
+
   darkbg: '#000000',
   lightbg: '#FFFFFF',
 
@@ -25,6 +39,7 @@ const initialState = {
   soliddark: '#1C1C1C',
   doubledark: ['#0A0A0A', '#303030'],
   darkmodetext: '#fff',
+
 
 
   isdarkmode: false,
@@ -53,6 +68,12 @@ function userReducer(state = initialState, action) {
   
     case ISDARKMODE:
       return { ...state, isdarkmode: action.payload };
+
+      case "switchMode":
+        return {
+          ...state,
+          Colors: action.Colors,
+        }
       
     default:
       return state;

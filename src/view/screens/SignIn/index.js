@@ -7,10 +7,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
-
-
 import { GoogleSignin, statusCodes, GoogleAuth } from '@react-native-google-signin/google-signin';
-
 
 import Main_screens from '../../../assets/Custom/Main_screens';
 import { StatusBar } from 'react-native';
@@ -40,7 +37,6 @@ export default function Validations({ navigation }) {
         darkbg,
         lightbg,
         purple,
-        pink,
         lightgray,
         darkgray,
 
@@ -49,7 +45,10 @@ export default function Validations({ navigation }) {
         soliddark,
         darkmodetext,
         isdarkmode,
+        Colors,
     } = useSelector(state => state.userReducer);
+
+    const { bgColor, pink, BlackOrPurple, lightGreyHeading, btnTxt, headingColor, inputBorderCol, inputPlacCol, greyOrDark } = Colors;
 
     useEffect(() => {
         const subscription = Appearance.addChangeListener(({ colorScheme }) => {
@@ -151,7 +150,7 @@ export default function Validations({ navigation }) {
                                 <TextInput
                                     name="email"
                                     placeholder="Username or Email"
-                                    placeholderTextColor={isDarkMode?lightbg:'#676767'}
+                                    placeholderTextColor={isDarkMode ? lightbg : '#676767'}
                                     style={styles.textInput}
                                     onChangeText={handleChange('email')}
                                     onBlur={handleBlur('email')}
@@ -171,7 +170,7 @@ export default function Validations({ navigation }) {
                                 <TextInput
                                     name="password"
                                     placeholder="Password"
-                                    placeholderTextColor={isDarkMode?lightbg:'#676767'}
+                                    placeholderTextColor={isDarkMode ? lightbg : '#676767'}
                                     style={styles.textInput}
                                     onChangeText={handleChange('password')}
                                     onBlur={handleBlur('password')}
@@ -205,9 +204,9 @@ export default function Validations({ navigation }) {
                         </>
                     )}
                 </Formik>
-                <Text 
-                onPress={()=>{navigation.navigate('ForgetPassword')}}
-                style={[styles.txtf, { color: isDarkMode ? lightbg : '#0D0D0D', }]}>Forgot Password?</Text>
+                <Text
+                    onPress={() => { navigation.navigate('ForgetPassword') }}
+                    style={[styles.txtf, { color: isDarkMode ? lightbg : '#0D0D0D', }]}>Forgot Password?</Text>
 
                 <Text style={styles.txts}>sign in with</Text>
 
@@ -220,8 +219,8 @@ export default function Validations({ navigation }) {
                         <G />
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={0.7} style={[styles.btn, { backgroundColor: isDarkMode ? darkgray : lightgray }]}>
-                    {isDarkMode ?
-                         <WA /> :
+                        {isDarkMode ?
+                            <WA /> :
                             <A />
                         }
                     </TouchableOpacity>

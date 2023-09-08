@@ -44,7 +44,7 @@ export default function Main_screens(props) {
     return (
         <View>
             <Text style={{
-                width: responsiveScreenWidth(50), height: responsiveScreenHeight(12),
+                width: responsiveScreenWidth(80), height: 100,
                 fontSize: responsiveScreenFontSize(5),
                 color: isDarkMode ? lightbg : darkbg,
                 fontWeight: 'bold',

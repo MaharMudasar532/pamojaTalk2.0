@@ -9,6 +9,15 @@ export const DARKGRAY = 'DARKGRAY';
 export const DOUBLEDARK = 'DOUBLEDARK';
 export const SOLIDDARK = 'SOLIDDARK';
 
+
+export const switchDarkMode = Colors => {
+  console.log('Colors at   redux--', Colors);
+  return {
+    type: 'switchMode',
+    Colors: Colors,
+  };
+};
+
 export const setIsDarkMode = isdarkmode => dispatch => {
   dispatch({
     type: ISDARKMODE,

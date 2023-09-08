@@ -34,7 +34,7 @@ import WA from '../../../assets/svg/wa.svg';
 import { Checkbox } from 'react-native-paper';
 
 
-export default function Validations({navigation}) {
+export default function Validations({ navigation }) {
 
     const [isDarkMode, setIsDarkMode] = useState(Appearance.getColorScheme() === 'dark');
 
@@ -42,7 +42,6 @@ export default function Validations({navigation}) {
         darkbg,
         lightbg,
         purple,
-        pink,
         lightgray,
         darkgray,
 
@@ -51,7 +50,10 @@ export default function Validations({navigation}) {
         soliddark,
         darkmodetext,
         isdarkmode,
+        Colors,
     } = useSelector(state => state.userReducer);
+
+    const { bgColor, pink, BlackOrPurple, lightGreyHeading, btnTxt, headingColor, inputBorderCol, inputPlacCol, greyOrDark } = Colors;
 
     useEffect(() => {
         const subscription = Appearance.addChangeListener(({ colorScheme }) => {
@@ -136,13 +138,13 @@ export default function Validations({navigation}) {
     const [showPassword, setShowPassword] = useState(false);
     const [showPassword1, setShowPassword1] = useState(false);
     return (
-        <ScrollView style={[styles.container, { backgroundColor: isDarkMode ? darkbg : lightbg, }]}>
+        <ScrollView style={[styles.container, { backgroundColor: bgColor }]}>
 
             <StatusBar hidden={true} />
 
             <View style={{ marginHorizontal: '7%', marginTop: '10%', }}>
                 <Main_screens
-                    txt1="Create an account"
+                    txt1={`Create an \naccount `}
                     txt2="Sign Up"
                 />
                 <Formik
@@ -164,14 +166,14 @@ export default function Validations({navigation}) {
                         <>
                             <View style={[styles.textInputContainer,
                             {
-                                backgroundColor: isDarkMode ? darkgray : lightbg,
-                                borderColor: isDarkMode ? darkgray : '#C4C4C4',
+                                backgroundColor: bgColor,
+                                borderColor: inputBorderCol,
                             }]}>
                                 <User style={{ marginLeft: '3%' }} />
                                 <TextInput
                                     name="email"
                                     placeholder="Username or Email"
-                                    placeholderTextColor={isDarkMode?lightbg:'#676767'}
+                                    placeholderTextColor={isDarkMode ? lightbg : '#676767'}
                                     style={styles.textInput}
                                     onChangeText={handleChange('email')}
                                     onBlur={handleBlur('email')}
@@ -191,7 +193,7 @@ export default function Validations({navigation}) {
                                 <TextInput
                                     name="password"
                                     placeholder="Password"
-                                    placeholderTextColor={isDarkMode?lightbg:'#676767'}
+                                    placeholderTextColor={inputPlacCol}
                                     style={styles.textInput}
                                     onChangeText={handleChange('password')}
                                     onBlur={handleBlur('password')}
@@ -223,14 +225,14 @@ export default function Validations({navigation}) {
 
                             <View style={[styles.textInputContainer,
                             {
-                                backgroundColor: isDarkMode ? darkgray : lightbg,
-                                borderColor: isDarkMode ? darkgray : '#C4C4C4',
+                                backgroundColor: bgColor,
+                                borderColor: inputBorderCol,
                             }]}>
                                 <Lock style={{ marginLeft: '3%' }} />
                                 <TextInput
                                     name="confirmPassword"
                                     placeholder="confirm Password"
-                                    placeholderTextColor={isDarkMode?lightbg:'#676767'}
+                                    placeholderTextColor={inputPlacCol}
                                     style={styles.textInput}
                                     onChangeText={handleChange('confirmPassword')}
                                     onBlur={handleBlur('confirmPassword')}
@@ -290,7 +292,7 @@ export default function Validations({navigation}) {
                         </TouchableOpacity>
                     }
                     <Text style={styles.txtf}>By signing up you agree to our
-                        <Text style={[styles.underline, { color: isDarkMode ? purple : darkbg }]}> Terms & Condition</Text> and <Text style={[styles.underline, { color: isDarkMode ? pink : darkbg }]}>Privacy Policy.</Text>
+                        <Text style={[styles.underline, { color: BlackOrPurple }]}> Terms & Condition</Text> and <Text style={[styles.underline, { color: BlackOrPurple }]}>Privacy Policy.</Text>
                     </Text>
                 </View>
 
@@ -300,22 +302,22 @@ export default function Validations({navigation}) {
                 <View style={styles.btnv}>
                     <TouchableOpacity activeOpacity={0.7}
                         onPress={() => { googlelogin() }}
-                        style={[styles.btn, { backgroundColor: isDarkMode ? darkgray : lightgray }]}>
+                        style={[styles.btn, { backgroundColor: greyOrDark }]}>
                         <G />
                     </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={0.7} style={[styles.btn, { backgroundColor: isDarkMode ? darkgray : lightgray }]}>
+                    <TouchableOpacity activeOpacity={0.7} style={[styles.btn, { backgroundColor: greyOrDark }]}>
                         {isDarkMode ?
-                         <WA /> :
+                            <WA /> :
                             <A />
                         }
                     </TouchableOpacity>
-                    <TouchableOpacity activeOpacity={0.7} style={[styles.btn, { backgroundColor: isDarkMode ? darkgray : lightgray }]}>
+                    <TouchableOpacity activeOpacity={0.7} style={[styles.btn, { backgroundColor: greyOrDark }]}>
                         <F />
                     </TouchableOpacity>
                 </View>
 
 
-                <Text style={[styles.txtlast, { color: isDarkMode ? lightbg : '#181818', }]}>Already have an account?
+                <Text style={[styles.txtlast, { color: lightGreyHeading }]}>Already have an account?
                     <Text style={styles.txtlast1} onPress={() => {
                         navigation.navigate('SignIn')
                     }}> Sign in</Text>
