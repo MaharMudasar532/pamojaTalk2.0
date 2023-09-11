@@ -8,7 +8,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LinearGradient from 'react-native-linear-gradient';
 import { GoogleSignin, statusCodes, GoogleAuth } from '@react-native-google-signin/google-signin';
-
 import Main_screens from '../../../assets/Custom/Main_screens';
 import { StatusBar } from 'react-native';
 import {
@@ -16,10 +15,7 @@ import {
     responsiveScreenWidth,
     responsiveScreenFontSize
 } from "react-native-responsive-dimensions";
-
-
 import { useSelector, useDispatch } from 'react-redux';
-
 import Eye from '../../../assets/svg/eye.svg';
 import Lock from '../../../assets/svg/lock.svg';
 import User from '../../../assets/svg/User.svg';
@@ -97,11 +93,6 @@ export default function Validations({ navigation }) {
             console.error(error);
         }
     };
-
-
-
-
-
 
     const ValidationsSchema = Yup.object().shape({
         email: Yup.string().email('Please enter valid email').required('Email Address is Required'),
@@ -206,11 +197,10 @@ export default function Validations({ navigation }) {
                 </Formik>
                 <Text
                     onPress={() => { navigation.navigate('ForgetPassword') }}
-                    style={[styles.txtf, { color: isDarkMode ? lightbg : '#0D0D0D', }]}>Forgot Password?</Text>
-
+                    style={[styles.txtf, { color: isDarkMode ? lightbg : '#0D0D0D', }]}>
+                    Forgot Password?
+                </Text>
                 <Text style={styles.txts}>sign in with</Text>
-
-
                 <View style={styles.btnv}>
                     <TouchableOpacity
                         activeOpacity={0.7}
@@ -228,13 +218,10 @@ export default function Validations({ navigation }) {
                         <F />
                     </TouchableOpacity>
                 </View>
-
                 <Text style={[styles.txtlast, { color: isDarkMode ? '#FFFFFF' : '#181818' }]}>Don’t have an account?<Text
                     style={styles.txtlast1}
-                    onPress={() => { navigation.navigate('SignUp') }}> Sign up</Text></Text>
-
-
-
+                    onPress={() => { navigation.navigate('SignUp') }}> Sign up</Text>
+                </Text>
             </View>
         </ScrollView>
     );
